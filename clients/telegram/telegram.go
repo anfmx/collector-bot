@@ -1,10 +1,8 @@
 package telegram
 
 import (
-	"TelegramBot/clients/lib/e"
+	"TelegramBot/lib/e"
 	"encoding/json"
-
-	// "fmt"
 	"io"
 	"net/http"
 	"net/url"
@@ -23,8 +21,8 @@ const (
 	sendMessageMethod = "sendMessage"
 )
 
-func New(host, token string) Client {
-	return Client{
+func New(host, token string) *Client {
+	return &Client{
 		host:     host,
 		basePath: newBaseToken(token),
 		client:   http.Client{},
@@ -51,10 +49,14 @@ func (c *Client) Updates(offset, limit int) ([]Update, error) {
 	return res.Result, nil
 }
 
-func (c *Client) SendMsg(chatID int, text string) error {
+func (c *Client) SendMsg(chatID int, text string, parseMode string) error {
 	q := url.Values{}
 	q.Add("chat_id", strconv.Itoa(chatID))
 	q.Add("text", text)
+
+	if parseMode != "" {
+		q.Add("parse_mode", parseMode)
+	}
 
 	_, err := c.doRequest(sendMessageMethod, q)
 	if err != nil {
