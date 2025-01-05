@@ -17,7 +17,7 @@ const (
 
 const HTMLFormatter = "HTML"
 
-func (p *Processor) doCmd(text string, chatID int, username string) error {
+func (p *Processor) doCmd(chatID int, text, username string) error {
 	text = strings.TrimSpace(text)
 
 	log.Printf("got new command '%s' from '%s'", text, username)
@@ -38,7 +38,7 @@ func (p *Processor) doCmd(text string, chatID int, username string) error {
 	}
 }
 
-func (p *Processor) savePage(chatID int, pageURL string, username string) (err error) {
+func (p *Processor) savePage(chatID int, pageURL, username string) (err error) {
 	defer func() { err = e.WrapIfErr("can't do command save page", err) }()
 	page := &storage.Page{
 		URL:      pageURL,

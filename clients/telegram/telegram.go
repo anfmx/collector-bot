@@ -49,7 +49,7 @@ func (c *Client) Updates(offset, limit int) ([]Update, error) {
 	return res.Result, nil
 }
 
-func (c *Client) SendMsg(chatID int, text string, parseMode string) error {
+func (c *Client) SendMsg(chatID int, text, parseMode string) error {
 	q := url.Values{}
 	q.Add("chat_id", strconv.Itoa(chatID))
 	q.Add("text", text)
