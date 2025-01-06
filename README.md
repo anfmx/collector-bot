@@ -31,11 +31,11 @@ Replace `'YOUR_BOT_TOKEN'` with your actual bot token (with quotes)
  ┣ 📂clients
  ┃ ┗ 📂telegram
  ┃   ┗ 📜telegram.go
- ┃   ┗ type.go
+ ┃   ┗ 📜type.go
  ┣ 📂consumer
  ┃ ┗ 📜consumer.go
  ┃ ┗ 📂event-consumer
- ┃   ┗ event-consumer.go
+ ┃   ┗ 📜event-consumer.go
  ┣ 📂events
  ┃ ┗ 📜type.go
  ┃ ┗ 📂telegram
