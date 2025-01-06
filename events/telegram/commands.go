@@ -15,7 +15,10 @@ const (
 	StartCmd = "/start"
 )
 
-const HTMLFormatter = "HTML"
+const (
+	HTMLFormat     = "HTML"
+	MarkdownFormat = "Markdown"
+)
 
 func (p *Processor) doCmd(chatID int, text, username string) error {
 	text = strings.TrimSpace(text)
@@ -34,7 +37,7 @@ func (p *Processor) doCmd(chatID int, text, username string) error {
 	case StartCmd:
 		return p.sendHello(chatID)
 	default:
-		return p.tg.SendMsg(chatID, msgUnknownCommand, HTMLFormatter)
+		return p.tg.SendMsg(chatID, msgUnknownCommand, HTMLFormat)
 	}
 }
 
@@ -50,13 +53,13 @@ func (p *Processor) savePage(chatID int, pageURL, username string) (err error) {
 		return err
 	}
 	if isExists {
-		return p.tg.SendMsg(chatID, msgAlreadyExists, HTMLFormatter)
+		return p.tg.SendMsg(chatID, msgAlreadyExists, HTMLFormat)
 	}
 
 	if err := p.storage.Save(page); err != nil {
 		return err
 	}
-	if err := p.tg.SendMsg(chatID, msgSaved, HTMLFormatter); err != nil {
+	if err := p.tg.SendMsg(chatID, msgSaved, HTMLFormat); err != nil {
 		return err
 	}
 	return nil
@@ -70,9 +73,9 @@ func (p *Processor) sendRandom(chatID int, username string) (err error) {
 		return err
 	}
 	if errors.Is(err, storage.ErrNoSavedPages) {
-		return p.tg.SendMsg(chatID, msgNoSavedPages, HTMLFormatter)
+		return p.tg.SendMsg(chatID, msgNoSavedPages, HTMLFormat)
 	}
-	if err := p.tg.SendMsg(chatID, page.URL, HTMLFormatter); err != nil {
+	if err := p.tg.SendMsg(chatID, page.URL, HTMLFormat); err != nil {
 		return err
 	}
 
@@ -80,11 +83,11 @@ func (p *Processor) sendRandom(chatID int, username string) (err error) {
 }
 
 func (p *Processor) sendHelp(chatID int) error {
-	return p.tg.SendMsg(chatID, msgHelp, HTMLFormatter)
+	return p.tg.SendMsg(chatID, msgHelp, HTMLFormat)
 }
 
 func (p *Processor) sendHello(chatID int) error {
-	return p.tg.SendMsg(chatID, msgHello, HTMLFormatter)
+	return p.tg.SendMsg(chatID, msgHello, HTMLFormat)
 }
 
 func isLink(text string) bool {
