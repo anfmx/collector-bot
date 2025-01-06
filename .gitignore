@@ -1,4 +1,4 @@
-files_storage/
+files_storage/*
 
 *.exe
 *.exe~
