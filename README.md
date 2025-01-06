@@ -4,7 +4,7 @@
 
 ![Go Version](https://img.shields.io/badge/Go-1.23.4-blue)
 ![License](https://img.shields.io/badge/License-MIT-red)
-![Version](https://img.shields.io/badge/Version-1.0.1-000080)
+![Version](https://img.shields.io/badge/Version-1.0.2-000080)
 
 ## Usage
 
