@@ -1,9 +1,10 @@
-# Link Collector Bot
+# Collector Bot
 
-**Link Collector Bot** - telegram bot is built to store and manage information while being highly scalable. Initially it only sends random saved links, but its architecture allows to easily add new features and adapt the bot to your specific needs.
+**Collector Bot** - telegram bot is built to store and manage information while being highly scalable. Initially it only sends random saved links, but its architecture allows to easily add new features and adapt the bot to your specific needs.
 
 ![Go Version](https://img.shields.io/badge/Go-1.23.4-blue)
 ![License](https://img.shields.io/badge/License-MIT-red)
+![Version](https://img.shields.io/badge/Version-1.0.1-000080)
 
 ## Usage
 
